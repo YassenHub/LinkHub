@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffc900">
+  <meta name="color-scheme" content="light dark">
+  <title>LinkHub | Yassen’s Web Collection</title>
+  <meta name="description" content="LinkHub - Yassen’s personal collection of projects, websites, music, downloads, tools, games, books and AI services.">
+  <meta property="og:title" content="LinkHub | Yassen’s Web Collection">
+  <meta property="og:description" content="My projects and favorite websites in one place.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='3' y='3' width='58' height='58' rx='14' fill='%23ffc900' stroke='%23111' stroke-width='5'/%3E%3Ctext x='32' y='46' font-family='Arial Black,Arial' font-size='38' font-weight='900' text-anchor='middle' fill='%23111'%3EL%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+  <style>
+    :root { --paper:#f7f5ee; --ink:#111; --card:#fff; --sh:#111; --mut:#55554f;
+      --a0:#ffc900; --a1:#ff90e8; --a2:#5eead4; --a3:#93c5fd;
+      --display:"Archivo Black","Arial Black",Impact,system-ui,sans-serif; }
+    @media (prefers-color-scheme: dark) { :root { --paper:#151515; --ink:#f4f4ef; --card:#222; --sh:#ffc900; --mut:#a9a9a0; } }
+    * { box-sizing:border-box; }
+    [hidden] { display:none !important; }
+    html { scroll-behavior:smooth; scroll-padding-top:80px; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+      background-image:radial-gradient(color-mix(in srgb,var(--ink) 14%,transparent) 1.2px,transparent 1.2px); background-size:22px 22px; }
+    a { color:inherit; }
+    :focus-visible { outline:3px solid var(--ink); outline-offset:3px; }
+    .skip { position:absolute; left:12px; top:-70px; z-index:30; padding:10px 16px; background:var(--a0); color:#111; border:3px solid #111; font-weight:800; text-decoration:none; }
+    .skip:focus { top:10px; }
+    .wrap { width:min(1160px,calc(100% - 36px)); margin:0 auto; }
+
+    .hero { padding:46px 0 34px; }
+    .badge { display:inline-block; padding:4px 12px; background:var(--a1); color:#111; border:3px solid var(--ink); border-radius:99px; font:800 13px system-ui; transform:rotate(-2deg); }
+    h1 { margin:18px 0 0; font:400 clamp(58px,14vw,168px)/.92 var(--display); letter-spacing:-.03em; text-transform:uppercase; }
+    h1 mark { display:inline-block; padding:0 .1em; background:var(--a0); color:#111; border:4px solid var(--ink); border-radius:.12em; box-shadow:.06em .06em 0 var(--sh); transform:rotate(-2deg); }
+    .tagline { margin:22px 0 0; max-width:540px; font-size:18px; font-weight:600; }
+    .searchbox { margin-top:28px; width:min(660px,100%); }
+    #search { width:100%; padding:15px 18px; background:var(--card); color:var(--ink); border:3px solid var(--ink); border-radius:14px; box-shadow:6px 6px 0 var(--sh); font:700 19px system-ui; transition:box-shadow .15s,transform .15s; }
+    #search:focus { outline:none; transform:translate(-2px,-2px); box-shadow:9px 9px 0 var(--a1); }
+    .hint { margin-top:14px; color:var(--mut); font-size:13px; }
+    kbd { padding:1px 7px; border:2px solid var(--ink); border-radius:6px; background:var(--card); font:700 12px ui-monospace,monospace; }
+
+    .nav { position:sticky; top:0; z-index:10; background:var(--paper); border-block:3px solid var(--ink); }
+    .nav .wrap { display:flex; gap:8px; overflow-x:auto; padding:10px 0; scrollbar-width:thin; }
+    .nav a { flex:none; padding:5px 13px; background:var(--card); border:2px solid var(--ink); border-radius:99px; font:700 13px system-ui; text-decoration:none; transition:background .12s; }
+    .nav a:hover { background:var(--c,var(--a0)); color:#111; }
+
+    main { padding:38px 0 70px; }
+    .section { margin-bottom:50px; }
+    .sh { display:flex; align-items:center; gap:14px; margin-bottom:20px; flex-wrap:wrap; }
+    .sh h2 { margin:0; padding:5px 16px; background:var(--c); color:#111; border:3px solid var(--ink); border-radius:12px; box-shadow:4px 4px 0 var(--sh); font:400 clamp(22px,4vw,32px)/1.15 var(--display); transform:rotate(-1deg); }
+    .cnt { font:700 13px ui-monospace,monospace; color:var(--mut); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(235px,1fr)); gap:18px; }
+    .grid.big { grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:22px; }
+    .card { display:flex; align-items:center; gap:13px; padding:14px; background:var(--card); border:3px solid var(--ink); border-radius:14px; box-shadow:5px 5px 0 var(--sh); text-decoration:none; transition:transform .12s,box-shadow .12s; }
+    .card:hover, .card:focus-visible { transform:translate(-3px,-3px); box-shadow:8px 8px 0 var(--sh); }
+    .card:active { transform:translate(2px,2px); box-shadow:2px 2px 0 var(--sh); }
+    .tile { flex:none; width:44px; height:44px; display:grid; place-items:center; background:var(--c); color:#111; border:3px solid var(--ink); border-radius:10px; font:400 20px var(--display); }
+    .copy { flex:1; min-width:0; }
+    .name { display:block; font-weight:800; }
+    .host { display:block; color:var(--mut); font-size:12.5px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .go { flex:none; width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round; }
+    .big .card { flex-direction:column; align-items:flex-start; gap:8px; min-height:168px; padding:20px; background:var(--c); color:#111; }
+    .big .name { font:400 28px/1.1 var(--display); }
+    .big .host { color:#111; opacity:.8; white-space:normal; font-size:14.5px; font-weight:600; }
+    .big .copy { flex:none; width:100%; }
+    .big .go { margin-top:auto; width:30px; height:30px; padding:4px; background:#111; stroke:#fff; border-radius:50%; }
+    .empty { padding:36px; text-align:center; font-weight:700; border:3px dashed var(--ink); border-radius:16px; }
+    footer { background:var(--ink); color:var(--paper); padding:26px 0 34px; font-size:14px; }
+    footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+    footer a { color:var(--a0); font-weight:700; }
+    @media (prefers-color-scheme: dark) { footer { color:#151515; } footer a { color:#7a5a00; } }
+    @media (max-width:480px) { .grid { grid-template-columns:1fr; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } * { transition:none !important; } }
+  </style>
+</head>
+<body id="top">
+  <a class="skip" href="#directory">Skip to links</a>
+  <header class="hero wrap">
+    <span class="badge">By Yassen</span>
+    <h1>Link<mark>Hub</mark></h1>
+    <p class="tagline">My projects and favorite websites, music and downloads, all on one page.</p>
+    <div class="searchbox" role="search">
+      <input id="search" type="search" placeholder="Search: Spotify, Ubuntu, CMD Lab..." aria-label="Search websites" autocomplete="off" spellcheck="false">
+      <div class="hint">Press <kbd>/</kbd> to search, <kbd>Esc</kbd> to clear</div>
+    </div>
+  </header>
+  <nav class="nav" aria-label="Categories"><div class="wrap" id="side"></div></nav>
+  <main class="wrap" id="directory" tabindex="-1">
+    <noscript><p>LinkHub needs JavaScript to show the links. Please enable it and reload.</p></noscript>
+    <div class="empty" id="empty" role="status" hidden>No websites found. Try another search.</div>
+  </main>
+  <footer><div class="wrap"><span>Designed &amp; maintained by Yassen Islam</span><a href="#top">Back to top ↑</a></div></footer>
+
+  <script>
+    // To add a site: [name, url, optional note]
+    const DATA = [
+      { id: 'music', title: 'Music', items: [
+        ['Spotify', 'https://open.spotify.com'], ['YouTube Music', 'https://music.youtube.com'],
+        ['Anghami', 'https://play.anghami.com'], ['SoundCloud', 'https://soundcloud.com'] ] },
+      { id: 'os', title: 'Operating Systems', items: [
+        ['Windows 11', 'https://www.microsoft.com/software-download/windows11', 'Official Microsoft download'],
+        ['Windows 10', 'https://www.microsoft.com/software-download/windows10', 'Official Microsoft download'],
+        ['Ubuntu', 'https://ubuntu.com/download'], ['Linux Mint', 'https://linuxmint.com/download.php'],
+        ['Fedora', 'https://fedoraproject.org/workstation/download'], ['Debian', 'https://www.debian.org/distrib/'],
+        ['Kali Linux', 'https://www.kali.org/get-kali/'], ['Arch Linux', 'https://archlinux.org/download/'] ] },
+      { id: 'install', title: 'Install Tools', items: [
+        ['Rufus', 'https://rufus.ie', 'Make a bootable USB (Windows)'],
+        ['Ventoy', 'https://www.ventoy.net', 'Boot many ISOs from one USB'],
+        ['balenaEtcher', 'https://etcher.balena.io', 'Flash images to USB or SD'] ] },
+      { id: 'apps', title: 'Apps', items: [
+        ['VS Code', 'https://code.visualstudio.com/download'], ['Firefox', 'https://www.mozilla.org/firefox/new/'],
+        ['VLC', 'https://www.videolan.org/vlc/'], ['7-Zip', 'https://www.7-zip.org/download.html'] ,['Sublime Text', 'https://www.sublimetext.com/download']] },
+      { id: 'social', title: 'Social', items: [
+        ['YouTube', 'https://www.youtube.com'], ['Facebook', 'https://www.facebook.com'],
+        ['Instagram', 'https://www.instagram.com'], ['Reddit', 'https://www.reddit.com'] ] },
+      { id: 'news', title: 'News', items: [
+        ['BBC News', 'https://www.bbc.com'], ['CNN', 'https://www.cnn.com'],
+        ['NBC News', 'https://www.nbcnews.com'], ['ABC News', 'https://abcnews.go.com'] ] },
+      { id: 'quick', title: 'Quick Access', items: [
+        ['Gmail', 'https://mail.google.com'], ['Outlook', 'https://outlook.live.com'],
+        ['Amazon Egypt', 'https://www.amazon.eg'], ['Dubizzle', 'https://www.dubizzle.com.eg'] ] },
+      { id: 'office', title: 'Office Web', items: [
+        ['Excel', 'https://excel.cloud.microsoft'], ['Word', 'https://word.cloud.microsoft'],
+        ['PowerPoint', 'https://powerpoint.cloud.microsoft'] ] },
+      { id: 'games', title: 'Games', items: [
+        ['Venge.io', 'https://venge.io'], ['Poki', 'https://poki.com'], ['CrazyGames', 'https://www.crazygames.com'],
+        ['Y8 Games', 'https://www.y8.com'], ['Playhop', 'https://playhop.com'] ] },
+      { id: 'books', title: 'Books', items: [
+        ['Noor Book', 'https://www.noor-book.com'], ['InfoBooks', 'https://infobooks.org/free-pdf-books'],
+        ['Obooko', 'https://www.obooko.com/category/free-reference-and-information-books'] ] },
+      { id: 'ai', title: 'AI', items: [
+        ['Claude', 'https://claude.ai'], ['DeepAI', 'https://deepai.org'], ['Copilot', 'https://copilot.microsoft.com'],
+        ['Perplexity AI', 'https://www.perplexity.ai'], ['ChatGPT', 'https://chatgpt.com'] ] }
+    ];
+    DATA.unshift({ id: 'mine', title: 'My Projects', big: true, items: [
+      ['CMD Lab', 'https://yassen2012ya.github.io/shell-lab/', 'CMD & PowerShell simulator with an AI explain mode'],
+      ['CMD Guide', 'https://yassen2012ya.github.io/CMD-Learner/', 'Windows commands cheat sheet'],
+      ['GitHub', 'https://github.com/yassen2012ya', 'All my code and projects'] ] });
+
+    const NS = 'http://www.w3.org/2000/svg';
+    const el = (t, c, x) => { const n = document.createElement(t); if (c) n.className = c; if (x) n.textContent = x; return n; };
+    const col = i => 'var(--a' + (i % 4) + ')';
+    const arrow = () => {
+      const s = document.createElementNS(NS, 'svg'), p = document.createElementNS(NS, 'path');
+      s.setAttribute('class', 'go'); s.setAttribute('viewBox', '0 0 24 24'); s.setAttribute('aria-hidden', 'true');
+      p.setAttribute('d', 'M7 17 17 7M8 7h9v9'); s.appendChild(p); return s;
+    };
+    const main = document.getElementById('directory'), side = document.getElementById('side'), empty = document.getElementById('empty');
+    const groups = [];
+
+    DATA.forEach((cat, ci) => {
+      const link = el('a', '', cat.title); link.href = '#' + cat.id; link.style.setProperty('--c', col(ci)); side.appendChild(link);
+      const sec = el('section', 'section'); sec.id = cat.id; sec.setAttribute('aria-labelledby', cat.id + '-h');
+      const head = el('div', 'sh'), h2 = el('h2', '', cat.title), cnt = el('span', 'cnt');
+      h2.id = cat.id + '-h'; h2.style.setProperty('--c', col(ci)); head.append(h2, cnt);
+      const grid = el('div', 'grid' + (cat.big ? ' big' : ''));
+      const rows = cat.items.map(([name, url, note], i) => {
+        const a = el('a', 'card'); a.href = url; a.rel = 'noopener noreferrer';
+        if (cat.big && url.includes('github.io')) { a.target = '_self'; } else a.target = '_blank';
+        a.style.setProperty('--c', col(cat.big ? i : ci + i));
+        a.setAttribute('aria-label', name + (a.target === '_blank' ? ' (opens in a new tab)' : ''));
+        const host = note || new URL(url).hostname.replace(/^www\./, '');
+        const copy = el('span', 'copy'); copy.append(el('span', 'name', name), el('span', 'host', host));
+        if (cat.big) a.append(copy, arrow());
+        else { const t = el('span', 'tile', name.charAt(0)); t.setAttribute('aria-hidden', 'true'); a.append(t, copy, arrow()); }
+        a._t = (name + ' ' + host + ' ' + cat.title).toLowerCase();
+        grid.appendChild(a); return a;
+      });
+      sec.append(head, grid); main.insertBefore(sec, empty);
+      groups.push({ sec, rows, cnt, link });
+    });
+
+    function render(q) {
+      let total = 0;
+      groups.forEach(g => {
+        let n = 0;
+        g.rows.forEach(r => { const ok = !q || r._t.includes(q); r.hidden = !ok; if (ok) n++; });
+        g.sec.hidden = g.link.hidden = !n; g.cnt.textContent = n + (n === 1 ? ' site' : ' sites'); total += n;
+      });
+      empty.hidden = total > 0;
+    }
+    render('');
+    const search = document.getElementById('search');
+    search.addEventListener('input', () => render(search.value.trim().toLowerCase()));
+    document.addEventListener('keydown', e => {
+      const typing = /^(input|textarea|select)$/i.test(document.activeElement.tagName);
+      if (e.key === '/' && !typing) { e.preventDefault(); search.focus(); }
+      if (e.key === 'Escape' && document.activeElement === search) { search.value = ''; render(''); search.blur(); }
+    });
+  </script>
+</body>
+</html>
